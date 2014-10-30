@@ -7,9 +7,15 @@
 </head>
 <body ng-app>
 
-<h1 ng-init="person = {name: 'dan'}">Welcome {{ person.name }}</h1>
+<h1 ng-init="person = {name: 'dan', age: 45}">Welcome {{ person.name }}</h1>
+<h1>I hear you are {{person.age}} years old. </h1>
+
+<p ng-show="person.age >= 18">You are old enough to vote!</p>
 
 <p><input type="text" ng-model="person.name"></p>
+
+
+<p><input type="number" ng-model="person.age"></p>
 
 </body>
 </html>
