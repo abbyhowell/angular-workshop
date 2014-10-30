@@ -7,9 +7,15 @@
 </head>
 <body ng-app>
 
-<h1 ng-init="person = {name: 'dan'}">Welcome {{ person.name }}</h1>
+<button ng-click="showAll = !showAll">Hide everything</button>
 
-<p><input type="text" ng-model="person.name"></p>
+	<div ng-show="showAll">
+
+	<h1 ng-init="person = {name: 'dan'}">Welcome {{ person.name }}</h1>
+
+	<p><input type="text" ng-model="person.name"></p>
+
+</div>
 
 </body>
 </html>
