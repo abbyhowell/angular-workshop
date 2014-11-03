@@ -68,17 +68,18 @@
         </div>
         
         <div class="col-md-6" ng-controller="ListCtrl">
+
+            <div id="categoryList">
+                <h2>Categories</h2>
+                <p ng-repeat="category in categories" ng-click="select(category)" ng-class="{selected: selectedCategory.id === category.id}">{{ category.name }}</p>
+
+            </div>
             <div id="taskList">
                 <ul>
-                    <li ng-repeat="task in tasks" ng-click="toggleCompletion(task)" ng-class="{completed: task.isCompleted}">{{ task.name }}</li>
+                    <li ng-repeat="task in tasks | filter: {category: selectedCategory.id} " ng-click="toggleCompletion(task)" ng-class="{completed: task.isCompleted, selected: task.category === selectedCategory.id}">{{ task.name }}</li>
                 </ul>
             </div>
 
-            <div id="categoryList">
-                <ul>
-                    <li ng-repeat="category in categories">{{ category.name }}</li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>

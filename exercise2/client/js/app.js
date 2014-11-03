@@ -96,10 +96,19 @@ angular.module('TaskManager').controller('ListCtrl', function($scope, $http, Ser
 
     $scope.tasks = TaskFactory.tasks;
     $scope.categories = CategoryFactory.categories;
+    $scope.selectedCategory = {};
 
     $scope.toggleCompletion = function(task) {
         task.isCompleted = !task.isCompleted;
 
         $http.put(ServerUrl + 'tasks/' + task.id, task);
+    };
+
+    $scope.select = function(category) {
+        if ($scope.selectedCategory.name === category.name) {
+            $scope.selectedCategory = {};
+        } else {
+            $scope.selectedCategory = category;
+        }
     };
 });

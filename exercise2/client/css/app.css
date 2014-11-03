@@ -15,3 +15,7 @@ form[name="taskForm"],
 .completed {
     text-decoration: line-through !important; /* lazy way to override hover styles so strike shows right way */
 }
+
+.selected {
+	color: pink;
+}
