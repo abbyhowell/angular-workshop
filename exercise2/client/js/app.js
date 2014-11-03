@@ -57,7 +57,7 @@ angular.module('TaskManager').controller('FormCtrl', function($scope, $http, Ser
         var httpRequests = [];
 
         for (var i = 0; i < $scope.tasks.length; i++) {
-            if ($scope.tasks[i].status === 2) {
+            if ($scope.tasks[i].isCompleted) {
                 httpRequests.push($http.delete(ServerUrl + 'tasks/' + $scope.tasks[i].id));
             }
         }
@@ -74,11 +74,7 @@ angular.module('TaskManager').controller('ListCtrl', function($scope, $http, Ser
     $scope.tasks = TaskFactory.tasks;
 
     $scope.toggleCompletion = function(task) {
-        if (task.status === 2) {
-            task.status = 0;
-        } else {
-            task.status = 2;
-        }
+        task.isCompleted = !task.isCompleted;
 
         $http.put(ServerUrl + 'tasks/' + task.id, task);
     };
