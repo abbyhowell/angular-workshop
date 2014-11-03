@@ -73,8 +73,12 @@ angular.module('TaskManager').controller('ListCtrl', function($scope, $http, Ser
 
     $scope.tasks = TaskFactory.tasks;
 
-    $scope.completeTask = function(task) {
-        task.status = 2;
+    $scope.toggleCompletion = function(task) {
+        if (task.status === 2) {
+            task.status = 0;
+        } else {
+            task.status = 2;
+        }
 
         $http.put(ServerUrl + 'tasks/' + task.id, task);
     };
