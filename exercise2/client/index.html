@@ -73,6 +73,12 @@
                     <li ng-repeat="task in tasks" ng-click="toggleCompletion(task)" ng-class="{completed: task.isCompleted}">{{ task.name }}</li>
                 </ul>
             </div>
+
+            <div id="categoryList">
+                <ul>
+                    <li ng-repeat="category in categories">{{ category.name }}</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
