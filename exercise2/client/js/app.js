@@ -18,9 +18,14 @@ angular.module('TaskManager').factory('TaskFactory', function($http, ServerUrl) 
         });
     };
 
+    var createTask = function(task) {
+        return $http.post(ServerUrl + 'tasks', task);
+    };
+
     return {
         tasks: tasks,
-        fetch: fetch
+        fetch: fetch,
+        createTask: createTask
     };
 });
 
@@ -61,11 +66,11 @@ angular.module('TaskManager').controller('FormCtrl', function($scope, $http, Ser
     };
 
     $scope.createTask = function(task) {
-        $http.post(ServerUrl + 'tasks', task).success(function(response) {
-            $scope.tasks.push(response);
+        var promise = TaskFactory.createTask(task);
+        promise.then(function(response) {
+            $scope.tasks.push(response.data);
 
             $scope.task.name = '';
-
             $scope.task.category = '';
         });
 
